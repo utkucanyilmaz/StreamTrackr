@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import User from "./components/User";
 
 const url = window.location.hash;
 const searchParams = new URLSearchParams(url);
@@ -6,6 +7,7 @@ let accessToken = searchParams.get("#access_token");
 
 function App() {
   const [data, setData] = useState([]);
+
   useEffect(() => {
     fetch(
       `https://api.twitch.tv/helix/streams/followed?user_id=${
@@ -24,11 +26,24 @@ function App() {
         setData(res.data);
       });
   }, []);
-
+  console.log(data);
   return (
-    <div className="bg-purple-400">
+    <div className="bg-tw-black max-w-[440px]">
       {data ? (
-        data.map(channel => <div key={channel.id}>{channel.user_login}</div>)
+        data.map(channel => (
+          <User
+            key={channel.id}
+            imgSrc={channel.thumbnail_url
+              .slice(0, channel.thumbnail_url.length - 20)
+              .concat("854x480.jpg")}
+            alt={`image from the ${channel.user_name}'s stream`}
+            username={channel.user_name}
+            title={channel.title}
+            game={channel.game_name}
+            viewer={channel.viewer_count}
+            userLogin={channel.user_login}
+          />
+        ))
       ) : (
         <a
           href={`https://id.twitch.tv/oauth2/authorize?response_type=token&client_id=${
