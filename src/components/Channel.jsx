@@ -9,12 +9,15 @@ export default function Channel({
   viewer,
   userLogin,
 }) {
-  const viewerFloat = viewer;
-
-  console.log(viewerFloat);
+  const viewerFloat =
+    viewer > 999
+      ? `${Number(viewer.toLocaleString())
+          .toFixed(1)
+          .replace(".", ",")} B izleyici`
+      : `${viewer} izleyici`;
 
   return (
-    <div className="rounded-xl bg-purple-900 overflow-hidden hover:bg-purple-600 group">
+    <div className="rounded-xl bg-purple-900 overflow-hidden hover:bg-purple-600 max-w-[450px]">
       <a
         href={`https://www.twitch.tv/${userLogin}`}
         target="_blank"
@@ -25,27 +28,17 @@ export default function Channel({
             <img
               src={imgSrc}
               alt={alt}
-              loading={"lazy"}
-              className="rounded-xl h-full w-fit aspect-video"
+              className="rounded-xl h-full aspect-video"
             />
             <p className="inline-flex items-center gap-x-1 bg-purple-600 rounded-md p-1 absolute bottom-2 left-2 bg-opacity-80">
               <span>
                 <FiUser color="red" />
               </span>
-              <span className="text-xs">
-                {viewer > 999
-                  ? `${viewer
-                      .toLocaleString()
-                      .slice(
-                        0,
-                        viewer.toLocaleString().indexOf(",")
-                      )} B izleyici`
-                  : `${viewer} izleyici`}
-              </span>
+              <span className="text-xs">{viewerFloat}</span>
             </p>
           </div>
 
-          <div className=" flex flex-col gap-y-2 p-4">
+          <div className=" flex flex-col justify-between gap-y-2 p-4">
             <p className="text-md font-bold">{username}</p>
             <p className="text-sm truncate">{title}</p>
             <p className="text-xs font-semibold">{game}</p>

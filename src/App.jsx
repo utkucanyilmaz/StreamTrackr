@@ -1,19 +1,35 @@
 import { useEffect, useState } from "react";
 import Channel from "./components/Channel";
+import Link from "./components/Link";
 
-const url = window.location.hash;
-const searchParams = new URLSearchParams(url);
+const urlHash = window.location.hash;
+const searchParams = new URLSearchParams(urlHash);
 let accessToken = searchParams.get("#access_token");
 
 function App() {
   const [data, setData] = useState([]);
+  const [user, setUser] = useState({});
+
+  useEffect(() => {
+    try {
+      fetch(`https://api.twitch.tv/helix/users`, {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          "Client-Id": `${import.meta.env.VITE_CLIENT_ID}`,
+        },
+      })
+        .then(res => res.json())
+        .then(res => setUser(res));
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
 
   useEffect(() => {
     try {
       fetch(
-        `https://api.twitch.tv/helix/streams/followed?user_id=${
-          import.meta.env.VITE_USER_ID
-        }`,
+        `https://api.twitch.tv/helix/streams/followed?user_id=${user.data[0].id}`,
         {
           method: "GET",
           headers: {
@@ -24,17 +40,16 @@ function App() {
       )
         .then(res => res.json())
         .then(res => {
-          localStorage.setItem("access-token", accessToken);
           setData(res.data);
         });
-    } catch (e) {
-      console.log(e);
+    } catch (error) {
+      console.log(error);
     }
-  }, []);
+  }, [user]);
 
   return (
-    <div className="bg-tw-black flex flex-col items-center justify-center gap-y-4 py-10 px-4 min-h-screen">
-      {data ? (
+    <div className="bg-tw-black flex flex-col items-center justify-center gap-y-4 py-6 px-4 min-h-screen">
+      {data.length > 0 ? (
         data.map(channel => (
           <Channel
             key={channel.id}
@@ -50,15 +65,7 @@ function App() {
           />
         ))
       ) : (
-        <a
-          href={`https://id.twitch.tv/oauth2/authorize?response_type=token&client_id=${
-            import.meta.env.VITE_CLIENT_ID
-          }&redirect_uri=${
-            import.meta.env.VITE_REDIRECT_URI
-          }&scope=user:read:follows`}
-        >
-          Connect With Twitch
-        </a>
+        <Link />
       )}
     </div>
   );

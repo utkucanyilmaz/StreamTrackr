@@ -9,7 +9,7 @@ function Link() {
         }&redirect_uri=${
           import.meta.env.VITE_REDIRECT_URI
         }&scope=user:read:follows`}
-        className="text-white"
+        className="text-white font-semibold text-xl bg-purple-900 px-8 py-3 rounded-lg hover:bg-purple-600"
       >
         Connect With Twitch
       </a>
