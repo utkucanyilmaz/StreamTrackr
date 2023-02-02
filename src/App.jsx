@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import User from "./components/User";
+import Channel from "./components/Channel";
 
 const url = window.location.hash;
 const searchParams = new URLSearchParams(url);
@@ -9,29 +9,34 @@ function App() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    fetch(
-      `https://api.twitch.tv/helix/streams/followed?user_id=${
-        import.meta.env.VITE_USER_ID
-      }`,
-      {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-          "Client-Id": `${import.meta.env.VITE_CLIENT_ID}`,
-        },
-      }
-    )
-      .then(res => res.json())
-      .then(res => {
-        setData(res.data);
-      });
+    try {
+      fetch(
+        `https://api.twitch.tv/helix/streams/followed?user_id=${
+          import.meta.env.VITE_USER_ID
+        }`,
+        {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+            "Client-Id": `${import.meta.env.VITE_CLIENT_ID}`,
+          },
+        }
+      )
+        .then(res => res.json())
+        .then(res => {
+          localStorage.setItem("access-token", accessToken);
+          setData(res.data);
+        });
+    } catch (e) {
+      console.log(e);
+    }
   }, []);
-  console.log(data);
+
   return (
-    <div className="bg-tw-black max-w-[440px]">
+    <div className="bg-tw-black flex flex-col items-center justify-center gap-y-4 py-10 px-4 min-h-screen">
       {data ? (
         data.map(channel => (
-          <User
+          <Channel
             key={channel.id}
             imgSrc={channel.thumbnail_url
               .slice(0, channel.thumbnail_url.length - 20)
