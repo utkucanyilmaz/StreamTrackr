@@ -2,7 +2,7 @@ import axios from "axios";
 
 const urlHash = window.location.hash;
 const searchParams = new URLSearchParams(urlHash);
-let accessToken = searchParams.get("#access_token");
+export const accessToken = searchParams.get("#access_token");
 
 export const getFollowedChannels = async () => {
   try {

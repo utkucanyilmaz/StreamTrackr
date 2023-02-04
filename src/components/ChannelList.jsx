@@ -1,10 +1,10 @@
 import React from "react";
 import Channel from "./Channel";
-import Link from "./Link";
+import Placeholder from "./Placeholder";
 
 function ChannelList({ data }) {
   return (
-    <div className="bg-tw-black flex flex-col items-center justify-center gap-y-4 py-6 px-4 min-h-screen">
+    <div className="flex flex-col items-center justify-center gap-y-2 py-4 px-2 min-h-screen">
       {data.length > 0 ? (
         data.map(channel => (
           <Channel
@@ -21,7 +21,7 @@ function ChannelList({ data }) {
           />
         ))
       ) : (
-        <Link />
+        <Placeholder />
       )}
     </div>
   );
