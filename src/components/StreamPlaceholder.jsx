@@ -1,6 +1,6 @@
 import React from "react";
 
-function Placeholder() {
+function StreamPlaceholder() {
   const windowHeight = window.innerHeight;
   const placeholderHeight = 84;
   const arrayLength = Math.floor(windowHeight / placeholderHeight);
@@ -27,4 +27,4 @@ function Placeholder() {
   );
 }
 
-export default Placeholder;
+export default StreamPlaceholder;

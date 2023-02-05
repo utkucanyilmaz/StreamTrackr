@@ -1,20 +1,25 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { getFollowedChannels } from "../api";
+import { getFollowedChannels, getUser } from "../api";
 
 const UserContext = createContext();
 
 const UserProvider = ({ children }) => {
   const [data, setData] = useState([]);
+  const [user, setUser] = useState();
 
   const values = {
     data,
     setData,
+    user,
+    setUser,
   };
 
   useEffect(() => {
     (async () => {
-      const followedChannels = await getFollowedChannels();
-      followedChannels && setData(followedChannels);
+      const followedChannelsData = await getFollowedChannels();
+      followedChannelsData && setData(followedChannelsData);
+      const userData = await getUser();
+      userData && setUser(userData);
     })();
   }, []);
 

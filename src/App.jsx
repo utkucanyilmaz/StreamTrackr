@@ -1,6 +1,6 @@
-import ThemeButton from "./components/ThemeButton";
 import ChannelList from "./components/ChannelList";
 import Link from "./components/Link";
+import User from "./components/User";
 import { useTheme } from "./context/ThemeContext";
 
 import { accessToken } from "./api";
@@ -10,14 +10,16 @@ function App() {
 
   return (
     <div
-      className={`flex flex-col items-center justify-center antialiased min-h-screen ${
+      className={`max-w-screen mx-auto flex flex-col items-center justify-center antialiased min-h-screen transition-colors ${
         darkMode ? "bg-tw-black" : "bg-tw-white"
-      } transition-colors`}
+      }`}
     >
       {accessToken ? (
         <>
-          <ThemeButton />
-          <ChannelList />
+          <User />
+          <div className="max-w-[450px]">
+            <ChannelList />
+          </div>
         </>
       ) : (
         <Link />
