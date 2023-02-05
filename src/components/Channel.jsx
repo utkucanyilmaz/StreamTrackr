@@ -1,4 +1,5 @@
 import { FiUser } from "react-icons/fi";
+import { useUser } from "../context/UserContext";
 
 export default function Channel({
   imgSrc,
@@ -15,7 +16,7 @@ export default function Channel({
       : `${viewer}`;
 
   return (
-    <div className="rounded-lg bg-purple-900 overflow-hidden hover:bg-purple-600 max-w-[450px] text-white font-helvetica">
+    <div className="rounded-lg bg-purple-800 overflow-hidden hover:bg-purple-600 max-w-[450px] text-white font-helvetica">
       <a href={`https://www.twitch.tv/${userLogin}`} target="_blank">
         <div className="grid grid-cols-3 gap-x-4">
           <div className="relative ">

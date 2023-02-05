@@ -11,7 +11,7 @@ function Placeholder() {
       {placeholderArray.map((_, index) => (
         <div
           key={index}
-          className="rounded-lg bg-purple-900 w-[450px] h-[84px] grid grid-cols-3 gap-x-4 overflow-hidden"
+          className="rounded-lg bg-purple-800 w-[450px] h-[84px] grid grid-cols-3 gap-x-4 overflow-hidden"
         >
           <div className="h-full w-full aspect-video bg-purple-700 relative animate-pulse">
             <div className="bg-purple-600 h-[20px] w-[53px] absolute bottom-2 left-2 rounded-md  animate-pulse"></div>

@@ -1,8 +1,10 @@
 import React from "react";
+import { useUser } from "../context/UserContext";
 import Channel from "./Channel";
 import Placeholder from "./Placeholder";
 
-function ChannelList({ data }) {
+function ChannelList() {
+  const { data } = useUser();
   return (
     <div className="flex flex-col items-center justify-center gap-y-2 py-4 px-2 min-h-screen">
       {data.length > 0 ? (

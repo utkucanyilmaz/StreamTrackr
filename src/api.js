@@ -4,7 +4,7 @@ const urlHash = window.location.hash;
 const searchParams = new URLSearchParams(urlHash);
 export const accessToken = searchParams.get("#access_token");
 
-export const getFollowedChannels = async () => {
+export const getUser = async () => {
   try {
     const {
       data: { data },
@@ -14,9 +14,17 @@ export const getFollowedChannels = async () => {
         "Client-Id": `${import.meta.env.VITE_CLIENT_ID}`,
       },
     });
+    return data;
+  } catch (e) {
+    console.log(e);
+  }
+};
 
+export const getFollowedChannels = async () => {
+  const user = await getUser();
+  try {
     const followedChannelsRes = await axios.get(
-      `https://api.twitch.tv/helix/streams/followed?user_id=${data[0].id}`,
+      `https://api.twitch.tv/helix/streams/followed?user_id=${user[0].id}`,
       {
         method: "GET",
         headers: {
