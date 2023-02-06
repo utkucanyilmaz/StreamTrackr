@@ -10,7 +10,7 @@ function User() {
     <div className="bg-purple-800 flex justify-between items-center w-full px-2 py-4">
       <div className="flex items-center justify-center gap-x-2">
         <img
-          className="h-10 rounded-full"
+          className="h-10 rounded-full border border-purple-500"
           src={user[0].profile_image_url}
           alt=""
         />

@@ -17,8 +17,8 @@ const UserProvider = ({ children }) => {
   useEffect(() => {
     (async () => {
       const followedChannelsData = await getFollowedChannels();
-      followedChannelsData && setData(followedChannelsData);
       const userData = await getUser();
+      followedChannelsData && setData(followedChannelsData);
       userData && setUser(userData);
     })();
   }, []);
