@@ -1,5 +1,6 @@
 import React from "react";
 import { useTheme } from "../context/ThemeContext";
+import { BsSunFill, BsMoonFill } from "react-icons/bs";
 
 function ThemeButton() {
   const { darkMode, setDarkMode } = useTheme();
@@ -9,11 +10,16 @@ function ThemeButton() {
   return (
     <button
       className={`${
-        darkMode ? "bg-tw-white text-tw-black" : "bg-tw-black text-white"
-      } py-1 px-3 text-sm transition-colors rounded-lg`}
+        darkMode ? "bg-tw-black" : "bg-tw-white"
+      } h-8 w-8 text-sm transition-colors rounded-full flex items-center justify-center
+     `}
       onClick={handleDarkMode}
     >
-      {darkMode ? "Dark" : "Light"}
+      {darkMode ? (
+        <BsSunFill className="text-tw-white" size={20} />
+      ) : (
+        <BsMoonFill className="text-tw-black" size={18} />
+      )}
     </button>
   );
 }
