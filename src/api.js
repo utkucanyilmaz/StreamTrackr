@@ -8,7 +8,7 @@ export const getUser = async () => {
   try {
     const {
       data: { data },
-    } = await axios.get(`https://api.twitch.tv/helix/users`, {
+    } = await axios.get(`${import.meta.env.VITE_BASE_URL}/users`, {
       headers: {
         Authorization: `Bearer ${accessToken}`,
         "Client-Id": `${import.meta.env.VITE_CLIENT_ID}`,
@@ -24,9 +24,8 @@ export const getFollowedChannels = async () => {
   const user = await getUser();
   try {
     const followedChannelsRes = await axios.get(
-      `https://api.twitch.tv/helix/streams/followed?user_id=${user[0].id}`,
+      `${import.meta.env.VITE_BASE_URL}/streams/followed?user_id=${user[0].id}`,
       {
-        method: "GET",
         headers: {
           Authorization: `Bearer ${accessToken}`,
           "Client-Id": `${import.meta.env.VITE_CLIENT_ID}`,
@@ -39,6 +38,19 @@ export const getFollowedChannels = async () => {
     } = followedChannelsRes;
 
     return followedChannels;
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+export const validateAccessToken = async () => {
+  try {
+    const validation = axios.get(`https://id.twitch.tv/oauth2/validate`, {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    });
+    return validation;
   } catch (e) {
     console.log(e);
   }

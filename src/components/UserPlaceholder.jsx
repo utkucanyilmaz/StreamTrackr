@@ -10,6 +10,7 @@ function UserPlaceholder() {
       <div className="flex gap-x-2">
         <div className="h-8 w-8 bg-purple-600 rounded-full animate-pulse"></div>
         <div className="h-8 w-8 bg-purple-600 rounded-full animate-pulse"></div>
+        <div className="h-8 w-8 bg-purple-600 rounded-full animate-pulse"></div>
       </div>
     </div>
   );
