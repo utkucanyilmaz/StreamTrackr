@@ -7,6 +7,7 @@ const UserProvider = ({ children }) => {
   const [data, setData] = useState([]);
   const [user, setUser] = useState();
   const [filteredData, setFilteredData] = useState(data);
+
   // const [validation, setValidation] = useState();
 
   useEffect(() => {

@@ -4,6 +4,7 @@ import { BsSunFill, BsMoonFill } from "react-icons/bs";
 
 function ThemeButton() {
   const { darkMode, setDarkMode } = useTheme();
+
   const handleDarkMode = () => {
     setDarkMode(prev => !prev);
   };

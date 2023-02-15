@@ -7,7 +7,7 @@ function ChannelList() {
   const { filteredData } = useUser();
 
   return (
-    <div className="flex flex-col items-center justify-start gap-y-2 p-2 min-h-screen">
+    <div className="flex flex-col items-center justify-start gap-y-2 p-2 min-h-screen font-helvetica text-white overflow-hidden">
       {filteredData.length > 0 ? (
         filteredData.map(channel => (
           <Channel

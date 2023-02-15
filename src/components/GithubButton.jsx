@@ -9,7 +9,7 @@ function GithubButton() {
     >
       <BsGithub
         size={32}
-        className="text-purple-400 group-hover:text-purple-200 transition-colors"
+        className={`text-purple-500 group-hover:text-purple-200 transition-colors`}
       />
     </a>
   );

@@ -49,7 +49,7 @@ function SearchBar() {
         />
       )}
       <button
-        className="flex items-center justify-center bg-purple-400 p-2 rounded-full hover:bg-purple-200 transition-colors"
+        className="flex items-center justify-center bg-purple-500 p-2 rounded-full hover:bg-purple-200 transition-colors"
         onClick={handleToggleSearchBar}
       >
         <BsSearch size={16} className="text-purple-800" />

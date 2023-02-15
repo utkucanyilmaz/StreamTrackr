@@ -1,5 +1,7 @@
 import React from "react";
+
 import { useUser } from "../context/UserContext";
+
 import ThemeButton from "./ThemeButton";
 import UserPlaceholder from "./UserPlaceholder";
 import SearchBar from "./SearchBar";
@@ -10,7 +12,9 @@ function User() {
   const { user } = useUser();
 
   return user ? (
-    <div className="bg-purple-800 flex justify-between items-center w-full px-4 py-2 selection:text-purple-100 selection:bg-purple-500">
+    <div
+      className={`flex justify-between items-center w-full px-4 py-2 bg-purple-800 selection:text-purple-100 selection:bg-purple-500`}
+    >
       <div className="flex items-center justify-center gap-x-2">
         <UserInfo />
       </div>
