@@ -4,11 +4,13 @@ import Channel from "./Channel";
 import StreamPlaceholder from "./StreamPlaceholder";
 
 function ChannelList() {
-  const { filteredData } = useUser();
+  const { filteredData, isLoading } = useUser();
 
   return (
-    <div className="flex flex-col items-center justify-start gap-y-2 p-2 min-h-screen font-helvetica text-white overflow-hidden">
-      {filteredData.length > 0 ? (
+    <div className="flex flex-col items-center justify-start gap-y-2 p-2 min-h-screen font-helvetica text-white">
+      {isLoading ? (
+        <StreamPlaceholder />
+      ) : (
         filteredData.map(channel => (
           <Channel
             key={channel.id}
@@ -23,8 +25,6 @@ function ChannelList() {
             userLogin={channel.user_login}
           />
         ))
-      ) : (
-        <StreamPlaceholder />
       )}
     </div>
   );

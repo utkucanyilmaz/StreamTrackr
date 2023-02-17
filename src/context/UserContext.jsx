@@ -7,12 +7,8 @@ const UserProvider = ({ children }) => {
   const [data, setData] = useState([]);
   const [user, setUser] = useState();
   const [filteredData, setFilteredData] = useState(data);
-
+  const [isLoading, setIsLoading] = useState(true);
   // const [validation, setValidation] = useState();
-
-  useEffect(() => {
-    setFilteredData(data);
-  }, [data]);
 
   const values = {
     data,
@@ -21,20 +17,29 @@ const UserProvider = ({ children }) => {
     setUser,
     filteredData,
     setFilteredData,
+    isLoading,
+    setIsLoading,
     // validation,
     // setValidation,
   };
 
   useEffect(() => {
-    (async () => {
-      // const validation = await validateAccessToken();
-      const followedChannelsData = await getFollowedChannels();
-      const userData = await getUser();
-      // validation && setValidation(validation);
-      followedChannelsData && setData(followedChannelsData);
-      userData && setUser(userData);
-    })();
+    getAndSetAllData();
   }, []);
+
+  useEffect(() => {
+    setFilteredData(data);
+  }, [data]);
+
+  const getAndSetAllData = async () => {
+    // const validation = await validateAccessToken();
+    // validation && setValidation(validation);
+    const userData = await getUser();
+    const followedChannelsData = await getFollowedChannels();
+    userData && setUser(userData);
+    followedChannelsData && setData(followedChannelsData);
+    setIsLoading(false);
+  };
 
   return <UserContext.Provider value={values}>{children}</UserContext.Provider>;
 };

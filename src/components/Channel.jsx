@@ -1,5 +1,4 @@
 import { FiUser } from "react-icons/fi";
-import { useTheme } from "../context/ThemeContext";
 
 export default function Channel({
   imgSrc,
@@ -10,7 +9,6 @@ export default function Channel({
   viewer,
   userLogin,
 }) {
-  const { darkMode } = useTheme();
   const formatViewerNumber = input => {
     const formattedViewer = new Intl.NumberFormat(window.navigator.language, {
       notation: "compact",
@@ -19,7 +17,9 @@ export default function Channel({
   };
 
   return (
-    <div className={`rounded-lg bg-purple-800 hover:bg-purple-600`}>
+    <div
+      className={`rounded-lg bg-purple-800 hover:bg-purple-600 overflow-hidden`}
+    >
       <a href={`https://www.twitch.tv/${userLogin}`} target="_blank">
         <div className="grid grid-cols-3 gap-x-2">
           <div className="relative">

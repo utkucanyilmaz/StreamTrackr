@@ -7,7 +7,8 @@ function UserPlaceholder() {
         <div className="h-8 w-8 bg-purple-600 rounded-full border border-purple-500 animate-pulse" />
         <div className="bg-purple-600 h-6 w-24 rounded-lg animate-pulse"></div>
       </div>
-      <div className="flex gap-x-2">
+      <div className="flex gap-x-1">
+        <div className="h-8 w-8 bg-purple-600 rounded-full animate-pulse"></div>
         <div className="h-8 w-8 bg-purple-600 rounded-full animate-pulse"></div>
         <div className="h-8 w-8 bg-purple-600 rounded-full animate-pulse"></div>
         <div className="h-8 w-8 bg-purple-600 rounded-full animate-pulse"></div>
