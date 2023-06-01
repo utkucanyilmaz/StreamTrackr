@@ -9,7 +9,12 @@ function UserInfo() {
         src={user[0].profile_image_url}
         alt=""
       />
-      <p className="text-md font-bold text-white">{user[0].display_name}</p>
+      <a
+        href={`https://www.twitch.tv/${user[0].display_name}`}
+        className="text-md font-bold text-white hover:text-purple-300 transition-colors"
+      >
+        {user[0].display_name}
+      </a>
     </>
   );
 }
