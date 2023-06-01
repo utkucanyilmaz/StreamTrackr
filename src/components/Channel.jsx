@@ -18,7 +18,7 @@ export default function Channel({
 
   return (
     <div
-      className={`rounded-lg bg-purple-800 hover:bg-purple-600 overflow-hidden`}
+      className={`rounded-lg bg-purple-800 hover:bg-purple-600 overflow-hidden transition-colors`}
     >
       <a href={`https://www.twitch.tv/${userLogin}`} target="_blank">
         <div className="grid grid-cols-3 gap-x-2">

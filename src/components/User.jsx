@@ -13,9 +13,7 @@ function User() {
   const { user } = useUser();
 
   return user ? (
-    <div
-      className={`flex justify-between items-center w-full px-4 py-2 bg-purple-800`}
-    >
+    <div className="flex justify-between items-center w-full px-4 py-2 bg-purple-800 sticky top-0 z-10">
       <div className="flex items-center justify-center gap-x-2">
         <UserInfo />
       </div>

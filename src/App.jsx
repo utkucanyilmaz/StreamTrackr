@@ -11,7 +11,7 @@ function App() {
 
   return (
     <div
-      className={`max-w-screen mx-auto flex flex-col items-center justify-center antialiased min-h-screen transition-colors selection:text-purple-100 selection:bg-purple-500 ${
+      className={`max-w-screen mx-auto flex flex-col items-center justify-center antialiased min-h-screen transition-colors selection:text-purple-100 selection:bg-purple-500 max-w-[470px] ${
         darkMode ? "bg-tw-black" : "bg-tw-white"
       }`}
     >
