@@ -1,29 +1,49 @@
 import ChannelList from "./components/ChannelList";
-import Link from "./components/Link";
 import User from "./components/User";
+import AccessTokenForm from "./components/AccessTokenForm";
 
 import { useTheme } from "./context/ThemeContext";
-
-import { accessToken } from "./api";
+import { UserProvider } from "./context/UserContext";
+import { useAccessToken } from "./context/AccessToken";
+import { useEffect, useState } from "react";
+import { validateAccessToken } from "./api";
 
 function App() {
+  const { accessToken } = useAccessToken();
   const { darkMode } = useTheme();
+  const [isTokenExpired, setIsTokenExpired] = useState(false);
+
+  useEffect(() => {
+    const checkTokenExpired = async () => {
+      try {
+        const res = await validateAccessToken(
+          accessToken || localStorage.getItem("userAccessToken")
+        );
+
+        if (Date.now() === res.data.expires_in * 1000 + Date.now()) {
+          setIsTokenExpired(true);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    localStorage.getItem("userAccessToken") && checkTokenExpired();
+  }, []);
 
   return (
     <div
-      className={`max-w-screen mx-auto flex flex-col items-center justify-center antialiased min-h-screen transition-colors selection:text-purple-100 selection:bg-purple-500 max-w-[470px] ${
+      className={`w-[430px] h-[560px] mx-auto flex flex-col items-center justify-start antialiased transition-colors selection:text-purple-100 selection:bg-purple-500 ${
         darkMode ? "bg-tw-black" : "bg-tw-white"
       }`}
     >
-      {accessToken ? (
-        <>
+      {accessToken && !isTokenExpired ? (
+        <UserProvider>
           <User />
-          <div className="max-w-[450px]">
-            <ChannelList />
-          </div>
-        </>
+          <ChannelList />
+        </UserProvider>
       ) : (
-        <Link />
+        <AccessTokenForm />
       )}
     </div>
   );

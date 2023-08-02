@@ -1,10 +1,10 @@
 import axios from "axios";
 
-const urlHash = window.location.hash;
-const searchParams = new URLSearchParams(urlHash);
-export const accessToken = searchParams.get("#access_token");
+// const urlHash = window.location.hash;
+// const searchParams = new URLSearchParams(urlHash);
+// searchParams.get("#access_token");;
 
-export const getUser = async () => {
+export const getUser = async accessToken => {
   try {
     const {
       data: { data },
@@ -20,8 +20,8 @@ export const getUser = async () => {
   }
 };
 
-export const getFollowedChannels = async () => {
-  const user = await getUser();
+export const getFollowedChannels = async accessToken => {
+  const user = await getUser(accessToken);
   try {
     const followedChannelsRes = await axios.get(
       `${import.meta.env.VITE_BASE_URL}/streams/followed?user_id=${user[0].id}`,
@@ -43,9 +43,9 @@ export const getFollowedChannels = async () => {
   }
 };
 
-export const validateAccessToken = async () => {
+export const validateAccessToken = async accessToken => {
   try {
-    const validation = axios.get(`https://id.twitch.tv/oauth2/validate`, {
+    const validation = await axios.get(`https://id.twitch.tv/oauth2/validate`, {
       headers: {
         Authorization: `Bearer ${accessToken}`,
       },

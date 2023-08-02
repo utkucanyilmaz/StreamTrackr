@@ -1,9 +1,7 @@
 import React from "react";
 
 function StreamPlaceholder() {
-  const windowHeight = window.innerHeight;
-  const placeholderHeight = 84;
-  const arrayLength = Math.floor(windowHeight / placeholderHeight);
+  const arrayLength = 6;
   const placeholderArray = new Array(arrayLength).fill(null);
 
   return (
@@ -11,7 +9,7 @@ function StreamPlaceholder() {
       {placeholderArray.map((_, index) => (
         <div
           key={index}
-          className="rounded-lg bg-purple-800 w-[433px] h-[78px] grid grid-cols-3 gap-x-2 overflow-hidden"
+          className="rounded-lg bg-purple-600 w-[400px] h-[76px] grid grid-cols-3 gap-x-2 overflow-hidden"
         >
           <div className="h-full w-full aspect-video bg-purple-700 relative animate-pulse">
             <div className="bg-purple-600 h-[20px] w-[44px] absolute bottom-2 left-2 rounded-md animate-pulse"></div>

@@ -16,9 +16,9 @@ function ReloadButton() {
   return (
     <button
       onClick={handleReload}
-      className="group flex items-center justify-center bg-purple-500 p-2 rounded-full hover:bg-purple-200 transition-colors"
+      className="group flex items-center justify-center bg-purple-500 rounded-full hover:bg-purple-200 transition-colors w-8 h-8"
     >
-      <TfiReload className="text-purple-800 group-hover:-rotate-180 duration-300" />
+      <TfiReload className="text-purple-800 group-hover:-rotate-180 duration-300 w-5 h-5" />
     </button>
   );
 }

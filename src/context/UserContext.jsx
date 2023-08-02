@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { getFollowedChannels, getUser, validateAccessToken } from "../api";
+import { getFollowedChannels, getUser } from "../api";
+import { useAccessToken } from "./AccessToken";
 
 const UserContext = createContext();
 
@@ -8,7 +9,7 @@ const UserProvider = ({ children }) => {
   const [user, setUser] = useState();
   const [filteredData, setFilteredData] = useState(data);
   const [isLoading, setIsLoading] = useState(true);
-  // const [validation, setValidation] = useState();
+  const { accessToken } = useAccessToken();
 
   const values = {
     data,
@@ -19,23 +20,19 @@ const UserProvider = ({ children }) => {
     setFilteredData,
     isLoading,
     setIsLoading,
-    // validation,
-    // setValidation,
   };
 
   useEffect(() => {
     getAndSetAllData();
-  }, []);
+  }, [accessToken]);
 
   useEffect(() => {
     setFilteredData(data);
   }, [data]);
 
   const getAndSetAllData = async () => {
-    // const validation = await validateAccessToken();
-    // validation && setValidation(validation);
-    const userData = await getUser();
-    const followedChannelsData = await getFollowedChannels();
+    const userData = await getUser(accessToken);
+    const followedChannelsData = await getFollowedChannels(accessToken);
     userData && setUser(userData);
     followedChannelsData && setData(followedChannelsData);
     setIsLoading(false);

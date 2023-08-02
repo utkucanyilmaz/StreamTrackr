@@ -7,7 +7,7 @@ function ChannelList() {
   const { filteredData, isLoading } = useUser();
 
   return (
-    <div className="flex flex-col items-center justify-start gap-y-2 p-2 min-h-screen font-helvetica text-white">
+    <div className="flex flex-col items-center justify-start gap-y-2 p-2 font-helvetica text-white overflow-y-scroll">
       {isLoading ? (
         <StreamPlaceholder />
       ) : (
@@ -17,7 +17,7 @@ function ChannelList() {
             imgSrc={channel.thumbnail_url
               .slice(0, channel.thumbnail_url.length - 20)
               .concat("426x240.jpg")}
-            alt={`image from the ${channel.user_name}'s stream`}
+            alt={`Preview of ${channel.user_name}'s stream`}
             username={channel.user_name}
             title={channel.title}
             game={channel.game_name}

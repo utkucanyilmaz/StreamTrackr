@@ -37,7 +37,7 @@ function SearchBar() {
         <input
           ref={searchBar}
           type="text"
-          className={`px-1 text-sm h-8 w-28 rounded-md transition-all border-2 border-transparent focus:border-2 focus-within:outline-none focus:outline-none focus:border-purple-400 ${
+          className={`px-1 text-sm h-8 w-24 rounded-md transition-all border-2 border-transparent focus:border-2 focus-within:outline-none focus:outline-none focus:border-purple-400 ${
             darkMode
               ? "bg-gray-600 placeholder:text-gray-200 caret-white text-tw-white || hover:border-2 hover:border-gray-500 || focus:bg-black focus:placeholder:text-gray-300"
               : "bg-gray-50 text-tw-black hover:border-2 hover:border-gray-400 placeholder:text-gray-600 || focus:bg-white"
@@ -49,7 +49,7 @@ function SearchBar() {
         />
       )}
       <button
-        className="group flex items-center justify-center bg-purple-500 p-2 rounded-full hover:bg-purple-200 transition-colors"
+        className="group flex items-center justify-center bg-purple-500 p-2 rounded-full hover:bg-purple-200 transition-colors w-8 h-8"
         onClick={handleToggleSearchBar}
       >
         <BsSearch

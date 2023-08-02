@@ -18,13 +18,17 @@ export default function Channel({
 
   return (
     <div
-      className={`rounded-lg bg-purple-800 hover:bg-purple-600 overflow-hidden transition-colors`}
+      className={`rounded-lg bg-purple-600 hover:bg-purple-800 transition-colors`}
     >
       <a href={`https://www.twitch.tv/${userLogin}`} target="_blank">
-        <div className="grid grid-cols-3 gap-x-2">
+        <div className="grid grid-cols-3 gap-x-2 overflow-hidden rounded-lg">
           <div className="relative">
-            <img src={imgSrc} alt={alt} className="h-full" />
-            <p className="inline-flex items-center gap-x-1 bg-purple-600 rounded-md py-[2px] px-1 absolute bottom-2 left-2 bg-opacity-80">
+            <img
+              src={imgSrc}
+              alt={alt}
+              className="h-full w-full aspect-video"
+            />
+            <p className="inline-flex items-center gap-x-1 bg-purple-500 rounded-md py-[2px] px-1 absolute bottom-2 left-2 bg-opacity-80">
               <span className="text-xs">
                 <FiUser color="red" />
               </span>
