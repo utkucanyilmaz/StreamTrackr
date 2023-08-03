@@ -4,7 +4,7 @@ import AccessTokenForm from "./components/AccessTokenForm";
 
 import { useTheme } from "./context/ThemeContext";
 import { UserProvider } from "./context/UserContext";
-import { useAccessToken } from "./context/AccessToken";
+import { useAccessToken } from "./context/AccessTokenContext";
 import { useEffect, useState } from "react";
 import { validateAccessToken } from "./api";
 
@@ -33,7 +33,7 @@ function App() {
 
   return (
     <div
-      className={`w-[430px] h-[560px] mx-auto flex flex-col items-center justify-start antialiased transition-colors selection:text-purple-100 selection:bg-purple-500 ${
+      className={`w-[400px] h-[560px] mx-auto flex flex-col items-center justify-start antialiased transition-colors selection:text-purple-100 selection:bg-purple-500 ${
         darkMode ? "bg-tw-black" : "bg-tw-white"
       }`}
     >

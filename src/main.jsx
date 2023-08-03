@@ -4,12 +4,12 @@ import App from "./App";
 import "./index.css";
 
 import { ThemeProvider } from "./context/ThemeContext";
-import { AccessToken } from "./context/AccessToken";
+import { AccessTokenProvider } from "./context/AccessTokenContext";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <AccessToken>
+  <AccessTokenProvider>
     <ThemeProvider>
       <App />
     </ThemeProvider>
-  </AccessToken>
+  </AccessTokenProvider>
 );

@@ -36,7 +36,7 @@ export default function Channel({
             </p>
           </div>
 
-          <div className="flex flex-col justify-between gap-y-1 pr-2 py-2 col-span-2">
+          <div className="flex flex-col justify-between gap-y-1 pr-1 py-1 col-span-2">
             <p className="text-sm font-bold">{username}</p>
             <p className="text-xs truncate">{title}</p>
             <p className="text-xs font-semibold">{game}</p>

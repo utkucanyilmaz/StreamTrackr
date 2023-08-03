@@ -2,7 +2,7 @@ import { createContext, useContext, useState } from "react";
 
 const AccessTokenContext = createContext();
 
-const AccessToken = ({ children }) => {
+const AccessTokenProvider = ({ children }) => {
   const [accessToken, setAccessToken] = useState(
     localStorage.getItem("userAccessToken") || false
   );
@@ -21,4 +21,4 @@ const AccessToken = ({ children }) => {
 
 const useAccessToken = () => useContext(AccessTokenContext);
 
-export { AccessToken, useAccessToken };
+export { AccessTokenProvider, useAccessToken };

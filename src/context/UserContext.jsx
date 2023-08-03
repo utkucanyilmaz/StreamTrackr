@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { getFollowedChannels, getUser } from "../api";
-import { useAccessToken } from "./AccessToken";
+import { useAccessToken } from "./AccessTokenContext";
 
 const UserContext = createContext();
 
