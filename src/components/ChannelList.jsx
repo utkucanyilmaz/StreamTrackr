@@ -7,7 +7,7 @@ function ChannelList() {
   const { filteredData, isLoading } = useUser();
 
   return (
-    <div className="flex flex-col items-center justify-start gap-y-2 p-2 font-helvetica text-white overflow-y-scroll">
+    <div className="flex flex-col items-center justify-start gap-y-2 p-2 text-white overflow-y-scroll">
       {isLoading ? (
         <StreamPlaceholder />
       ) : (

@@ -11,25 +11,36 @@ import { validateAccessToken } from "./api";
 function App() {
   const { accessToken } = useAccessToken();
   const { darkMode } = useTheme();
-  const [isTokenExpired, setIsTokenExpired] = useState(false);
+  const [isTokenValid, setIsTokenValid] = useState(null);
 
   useEffect(() => {
-    const checkTokenExpired = async () => {
-      try {
-        const res = await validateAccessToken(
-          accessToken || localStorage.getItem("userAccessToken")
-        );
+    const checkTokenValid = async () => {
+      const res = await validateAccessToken(
+        accessToken || localStorage.getItem("userAccessToken")
+      );
 
-        if (Date.now() === res.data.expires_in * 1000 + Date.now()) {
-          setIsTokenExpired(true);
-        }
-      } catch (error) {
-        console.log(error);
+      if (res?.status === 200) {
+        setIsTokenValid(true);
+        return;
+      }
+
+      if (res?.response?.status === 401) {
+        setIsTokenValid(false);
+        return;
+      }
+
+      if (Date.now() === res?.data.expires_in * 1000 + Date.now()) {
+        setIsTokenValid(false);
+        return;
       }
     };
 
-    localStorage.getItem("userAccessToken") && checkTokenExpired();
-  }, []);
+    checkTokenValid();
+  }, [accessToken]);
+
+  if (isTokenValid === null) {
+    return null;
+  }
 
   return (
     <div
@@ -37,7 +48,7 @@ function App() {
         darkMode ? "bg-tw-black" : "bg-tw-white"
       }`}
     >
-      {accessToken && !isTokenExpired ? (
+      {accessToken && isTokenValid ? (
         <UserProvider>
           <User />
           <ChannelList />

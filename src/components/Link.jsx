@@ -6,9 +6,10 @@ function Link() {
       }&redirect_uri=${
         import.meta.env.VITE_REDIRECT_URI
       }&scope=user:read:follows`}
-      className="text-white font-semibold text-xl bg-purple-600 px-8 py-3 rounded-lg hover:bg-purple-600"
+      className="py-2 rounded-md bg-purple-600 text-white hover:bg-purple-800 cursor-pointer transition-colors text-center"
+      target="_blank"
     >
-      Connect With Twitch
+      Get Your Access Token
     </a>
   );
 }

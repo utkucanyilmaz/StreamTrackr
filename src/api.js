@@ -52,6 +52,6 @@ export const validateAccessToken = async accessToken => {
     });
     return validation;
   } catch (e) {
-    console.log(e);
+    return e;
   }
 };
