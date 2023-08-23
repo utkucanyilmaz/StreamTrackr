@@ -7,6 +7,7 @@ import { UserProvider } from "./context/UserContext";
 import { useAccessToken } from "./context/AccessTokenContext";
 import { useEffect, useState } from "react";
 import { validateAccessToken } from "./api";
+import LoadingSpinner from "./components/LoadingSpinner";
 
 function App() {
   const { accessToken } = useAccessToken();
@@ -38,10 +39,6 @@ function App() {
     checkTokenValid();
   }, [accessToken]);
 
-  if (isTokenValid === null) {
-    return null;
-  }
-
   return (
     <div
       className={`w-[400px] h-[560px] mx-auto flex flex-col items-center justify-start antialiased transition-colors selection:text-purple-100 selection:bg-purple-500 ${
@@ -54,7 +51,9 @@ function App() {
           <ChannelList />
         </UserProvider>
       ) : (
-        <AccessTokenForm />
+        <div className="h-full w-full flex justify-center items-center">
+          {isTokenValid === false ? <AccessTokenForm /> : <LoadingSpinner />}
+        </div>
       )}
     </div>
   );
