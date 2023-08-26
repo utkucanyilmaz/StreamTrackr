@@ -32,9 +32,16 @@ const UserProvider = ({ children }) => {
 
   const getAndSetAllData = async () => {
     const userData = await getUser(accessToken);
-    const followedChannelsData = await getFollowedChannels(accessToken);
-    userData && setUser(userData);
-    followedChannelsData && setData(followedChannelsData);
+    const followedChannelsData = await getFollowedChannels(
+      accessToken,
+      userData[0]?.id
+    );
+    if (userData) {
+      setUser(userData);
+    }
+    if (followedChannelsData) {
+      setData(followedChannelsData);
+    }
     setIsLoading(false);
   };
 

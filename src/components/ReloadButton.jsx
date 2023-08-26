@@ -2,15 +2,22 @@ import React from "react";
 import { TfiReload } from "react-icons/tfi";
 import { useUser } from "../context/UserContext";
 import { getFollowedChannels } from "../api";
+import { useAccessToken } from "../context/AccessTokenContext";
 
 function ReloadButton() {
-  const { setIsLoading, setData } = useUser();
+  const { setIsLoading, setData, user } = useUser();
+  const { accessToken } = useAccessToken();
 
   const handleReload = async () => {
     setIsLoading(true);
-    const followedChannelsData = await getFollowedChannels();
-    followedChannelsData && setData(followedChannelsData);
-    setIsLoading(false);
+    const followedChannelsData = await getFollowedChannels(
+      accessToken,
+      user[0]?.id
+    );
+    if (followedChannelsData) {
+      setData(followedChannelsData);
+      setIsLoading(false);
+    }
   };
 
   return (

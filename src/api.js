@@ -2,7 +2,7 @@ import axios from "axios";
 
 // const urlHash = window.location.hash;
 // const searchParams = new URLSearchParams(urlHash);
-// searchParams.get("#access_token");;
+// searchParams.get("#access_token");
 
 export const getUser = async accessToken => {
   try {
@@ -20,11 +20,10 @@ export const getUser = async accessToken => {
   }
 };
 
-export const getFollowedChannels = async accessToken => {
-  const user = await getUser(accessToken);
+export const getFollowedChannels = async (accessToken, userId) => {
   try {
     const followedChannelsRes = await axios.get(
-      `${import.meta.env.VITE_BASE_URL}/streams/followed?user_id=${user[0].id}`,
+      `${import.meta.env.VITE_BASE_URL}/streams/followed?user_id=${userId}`,
       {
         headers: {
           Authorization: `Bearer ${accessToken}`,
