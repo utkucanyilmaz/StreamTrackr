@@ -1,9 +1,0 @@
-{
-  "manifest_version": 3,
-  "name": "Twitch Live Channels",
-  "description": "",
-  "version": "1.0",
-  "action": {
-    "default_popup": "index.html"
-  }
-}

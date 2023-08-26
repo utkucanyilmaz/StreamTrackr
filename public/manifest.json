@@ -1,0 +1,9 @@
+{
+  "manifest_version": 3,
+  "name": "StreamTrackr",
+  "description": "Stay connected to your favorite Twitch channels with StreamTrackr! Effortlessly track the online streams you follow, enhancing your Twitch experience.",
+  "version": "1.0",
+  "action": {
+    "default_popup": "index.html"
+  }
+}
