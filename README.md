@@ -15,7 +15,7 @@ StreamTrackr is a Chrome extension that helps you to see the channels you follow
 
 ## Installation
 
-To use the extension, you'll need an **Access Token**. You can obtain this token from [streamtrackr.netlify.app](https://streamtrackr.netlify.app/).
+> ❗ To use the extension, you'll need an **Access Token**. You can obtain this token from [streamtrackr.netlify.app](https://streamtrackr.netlify.app/).
 
 Follow these steps to install the extension:
 
