@@ -7,7 +7,7 @@ function LoadingSpinner() {
     <div role="status">
       <svg
         aria-hidden="true"
-        class={`w-8 h-8 mr-2 text-purple-600 animate-spin ${
+        className={`w-8 h-8 mr-2 text-purple-600 animate-spin ${
           darkMode ? "fill-black" : "fill-white"
         }`}
         viewBox="0 0 100 101"
@@ -23,7 +23,7 @@ function LoadingSpinner() {
           fill="currentFill"
         />
       </svg>
-      <span class="sr-only">Loading...</span>
+      <span className="sr-only">Loading...</span>
     </div>
   );
 }
