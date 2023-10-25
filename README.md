@@ -15,9 +15,32 @@ StreamTrackr is a Chrome extension that helps you to see the channels you follow
 
 ## Installation
 
-> ❗ To use the extension, you'll need an **Access Token**. You can obtain this token from [streamtrackr.netlify.app](https://streamtrackr.netlify.app/).
-
 Follow these steps to install the extension:
+
+### Registering Twitch
+
+- To register your app follow these steps -> [Register Your App](https://dev.twitch.tv/docs/authentication/register-app/)
+
+### Getting User Access Token
+
+> ❗ To use the extension, you'll need an **Access Token**.
+
+- This extension uses the **implicit grant flow** to obtain a user access token. You can find detailed information by visiting the following link ->
+  [Implicit Grant Flow](https://dev.twitch.tv/docs/authentication/getting-tokens-oauth/#implicit-grant-flow)
+
+### .env File Configuration
+
+`VITE_CLIENT_ID=YOUR_TWITCH_CLIENT_ID`
+
+`VITE_REDIRECT_URI=YOUR_REDIRECT_URI` (To perform local development, you can use the default Vite server with localhost:5173)
+
+`VITE_BASE_URL=https://api.twitch.tv/helix`
+
+`VITE_LINK=YOUR_LINK` (This link redirects specifically created website for obtaining a user access token)
+
+> Instead of creating an external site, you can customize the HTML hyperlink in the **Link** component as described in the implicit grant flow page.
+
+### Extension Setup
 
 - Clone this project's GitHub repository or download the ZIP file.
 - Run `npm install` to install dependencies.
