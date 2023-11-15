@@ -27,6 +27,7 @@ export default function Channel({
               src={imgSrc}
               alt={alt}
               className="h-full w-full aspect-video"
+              loading="lazy"
             />
             <p className="inline-flex items-center gap-x-1 bg-purple-500 rounded-md py-[2px] px-1 absolute bottom-2 left-2 bg-opacity-80">
               <span className="text-xs">
